@@ -1,9 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 import {Text, View} from 'react-native';
 
-import PostCard from '../../components/PostCard'
-import * as PostsApi from '../../utils/PostsAPI'
+import PostCardRedux from '../../components/PostCardRedux'
 import {load} from "../../actions/posts";
 
 class DetailScreenContainer extends React.Component {
@@ -42,7 +41,7 @@ class DetailScreenContainer extends React.Component {
                 {this.state.loading ? (
                     <Text>Aguarde...</Text>
                 ) : (
-                    <PostCard key={1} index={1} post={post} showBtnReadMore={false} />
+                    <PostCardRedux key={1} index={1} post={post} showBtnReadMore={false} />
                 )}
 
             </View>

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import {Button as RNButton, FlatList, StyleSheet, View} from 'react-native';
 
-import PostCard from '../../components/PostCard'
+import PostCardRedux from '../../components/PostCardRedux'
 import { search } from '../../actions/posts';
 
 class PostsScreenContainer extends React.Component {
@@ -32,7 +32,7 @@ class PostsScreenContainer extends React.Component {
 
     renderItem = ({item, index}) => {
         return (
-            <PostCard key={index} index={index} post={item} showBtnReadMore={true} handlePressDetail={this.handlePressDetail} />
+            <PostCardRedux key={index} index={index} post={item} showBtnReadMore={true} handlePressDetail={this.handlePressDetail} />
         )
     }
 

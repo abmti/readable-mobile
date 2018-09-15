@@ -1,4 +1,4 @@
-import {POST_FAILED, POST_LOADED, POSTS_SEARCHED} from '../utils/ActionTypes'
+import {POST_DELETED, POST_FAILED, POST_LOADED, POST_VOTED, POSTS_SEARCHED} from '../utils/ActionTypes'
 import * as PostsApi from '../utils/PostsAPI';
 
 
@@ -20,5 +20,29 @@ export const load = (id) => {
                 throw new Error('Record not found');
             }
         })
+    }
+}
+
+
+export const vote = (post, vote) => {
+    return (dispatch) => {
+        return PostsApi.vote(post, vote)
+            .then((post) => dispatch({type: POST_VOTED, post}))
+    }
+}
+
+export const remove = (id) => {
+    return (dispatch) => {
+        return PostsApi.remove(id)
+            .then((post) => {
+                dispatch(removed(post))
+            })
+    }
+}
+
+export const removed = (post) => {
+    return {
+        type: POST_DELETED,
+        post
     }
 }
